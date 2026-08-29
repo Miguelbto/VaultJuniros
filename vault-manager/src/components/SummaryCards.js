@@ -1,16 +1,16 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
 
-export default function SummaryCards({ saldo = 0, receitas = 0, despesas = 0}) {
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-    //Função auxiliar para formatar em Real(R$)
-    const formatCurrency = (value) => {
-        return value.toLocaleString('pt-BR', { stye: 'currency', currency: 'BRL' })
-    }
+export default function SummaryCards({ saldo = 0, receitas = 0, despesas = 0 }) {
+  // Função auxiliar para formatar em Real (R$)
+  const formatCurrency = (value) => {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  };
 
-    return (
-        <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       {/* Card Principal: Saldo Atual */}
       <View style={styles.mainCard}>
         <View style={styles.cardHeader}>
@@ -53,6 +53,8 @@ export default function SummaryCards({ saldo = 0, receitas = 0, despesas = 0}) {
 
 } 
 
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
