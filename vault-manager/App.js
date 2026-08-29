@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import { initDatabase } from './src/database/init'
-import { ActivityIndicator } from 'react-native/types_generated/index';
+import AppNavigator from './src/navigation/AppNavigator'
+
 
 export default function App() {
 
@@ -17,7 +18,7 @@ export default function App() {
             } catch (error) {
                 console.erro('Erro ao inicializar banco de dados', error)
             }
-            setup()
+            setUp()
     }, [])
 
     if (!dbPronto) {
@@ -30,10 +31,7 @@ export default function App() {
     }
 
     return (
-        <View style={styles.loadingData}>
-            <Text style={title}> Vault finance</Text>
-            <Text style={styles.subtitle}>banco de dados criado e populado</Text>
-        </View>
+        <AppNavigator />
     )
 }
 
