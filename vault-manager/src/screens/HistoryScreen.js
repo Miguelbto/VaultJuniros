@@ -22,7 +22,7 @@ export default function HistoryScreen() {
     const [ filtro, setFiltro ] = useState('Todos')
     const [ transacoes, setTransacoes ] = useState([])
     const [ modalVisible, setModalVisible ] = useState(false)
-    const [ itemToEdit, SetitemToEdit ] = useState(null)
+    const [ itemToEdit, setItemToEdit ] = useState(null)
 
     //Busca as transações filtradas no SQLite
     const loadTransactions = useCallback(async (tipoFiltro) => {
@@ -102,10 +102,10 @@ export default function HistoryScreen() {
                     return (
                         <TouchableOpacity
                         key={item}
-                        style={[styles.filterPill, isSelected && style.filterPillActive]}
+                        style={[styles.filterPill, isSelected && styles.filterPillActive]}
                         onPress={() => handleSelectFilter(item)}
                         >
-                            <Text styles={[styles.filterText, isSelected && styles.filterTextActive]}>{item}</Text>
+                            <Text style={[styles.filterText, isSelected && styles.filterTextActive]}>{item}</Text>
                         </TouchableOpacity>
                     )
                 })}
@@ -123,13 +123,13 @@ export default function HistoryScreen() {
             <Text style={styles.emptyText}>Nenhuma transação encontrada nesta categoria.</Text>
           </View>
         }
-            renderItem={({ item }) => {
+            renderItem={({ item }) => (
                 <TransactionItem 
                 item={item}
                 onEdit={handleopenEdit}
                 onDelete={handleDelete}
                 />
-            }}
+            )}
             />
 
             {/* Modal reaproveitado para Edição */}

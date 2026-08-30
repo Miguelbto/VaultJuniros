@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons } from '@expo/vector-icons';
-import { IOSConfig } from 'expo/config-plugins';
 
 export default function TransactionModal({ visible, onClose, onSave, itemToEdit = null }) {
 
@@ -41,8 +40,8 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
   }, [itemToEdit, visible])
 
   const handleSave = () => {
-    if (!descricao.trim()) {
-      Alert.alert('Erro, por favor insira um valor númerico')
+    if (!descricao || !descricao.trim()) {
+      Alert.alert('Erro, por favor insira uma descrição')
       return
     }
 
@@ -66,7 +65,7 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
   }
 
   return (
-    <Modal visible={visible} animationType='slide' transparent={true} onRequestClose={onclose}>
+    <Modal visible={visible} animationType='slide' transparent={true} onRequestClose={onClose}>
       <View style={styles.overlay}>
         <View style={styles.container}>
           {/* header do Modal */}
@@ -74,7 +73,7 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
             <Text style={styles.title}>
               {itemToEdit ? 'Editar Transaação' : 'Nova Transação'}
             </Text>
-            <TouchableOpacity onPress={onclose}>
+            <TouchableOpacity onPress={onClose}>
               <Ionicons name='close-circle-outline' size={28} color='#94A3B8' />
             </TouchableOpacity>
           </View>
@@ -105,27 +104,28 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
               placeholder={'0,00'}
               keyboardType='numeric'
               value={valor}
-              onChange={setValor}
+              onChangeText={setValor}
             />
 
             {/* Input Descrição */}
             <Text style={styles.label}>Descrição</Text>
             <TextInput
-              styles={styles.input}
+              style={styles.input}
               placeholder='Ex: Supermercado, Salário'
               value={descricao}
-              onChange={setDescricao}
+              onChangeText={setDescricao}
             />
 
             {/* Selecionar categoria */}
             <Text style={styles.label}>Categoria</Text>
             <View style={styles.pickerContainer}>
               <Picker
+                mode='dropdown'
                 selectedValue={categoria}
-                onChange={(itemValue) => setCategoria(itemValue)}
+                onValueChange={(itemValue) => setCategoria(itemValue)}
               >
-                <Picker.item label='Alimentação' value='Alimentação' />
-                <Picker.item label='Transporte' value='transporte' />
+                <Picker.Item label='Alimentação' value='Alimentação' />
+                <Picker.Item label='Transporte' value='transporte' />
                 <Picker.Item label='Renda / Salário' value='Renda' />
                 <Picker.Item label='Lazer' value='Lazer' />
                 <Picker.Item label='Outros' value='Outros' />
@@ -137,7 +137,7 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
             <TextInput style={styles.input}
               placeholder='2026-08-29'
               value={data}
-              onChange={setData}
+              onChangeText={setData}
             />
 
             {/* Botão Salvar */}

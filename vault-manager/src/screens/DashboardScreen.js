@@ -21,7 +21,7 @@ import {
   deleteTransaction,
 } from '../database/transactionRepository';
 
-export default function DashboardScreen() {
+export default function DashboardScreen({ navigation }) {
   const [totais, setTotais] = useState({
     saldo: 0,
     receitas: 0,
@@ -34,10 +34,11 @@ export default function DashboardScreen() {
   // Recarrega os saldos sempre que a tela ganha foco
   const loadData = useCallback(async () => {
     try {
-      const data = await getTotals();
+      const totaisData = await getTotals();
+      const transactionsData = await getTransactions();
       //Pega apenas as 3 útimas movimentações para o resumo do Dashboard
-      setRecentes(data.slice(0, 3))
-      setTotais(data);
+      setRecentes(transactionsData.slice(0, 3))
+      setTotais(totaisData);
     } catch (error) {
       console.error('Erro ao buscar totais do banco:', error);
     }

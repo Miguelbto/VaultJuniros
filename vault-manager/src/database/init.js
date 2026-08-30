@@ -1,4 +1,4 @@
-import * as SQLite from 'expo-sqllite'
+import * as SQLite from 'expo-sqlite'
 
 //Retorna a instância de conexão com o banco
 export async function getDbConnection() {

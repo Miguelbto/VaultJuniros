@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import { initDatabase } from './src/database/init'
 import AppNavigator from './src/navigation/AppNavigator'
 
@@ -9,16 +9,15 @@ export default function App() {
     const [dbPronto, setDbPronto ] = useState(false)
 
     useEffect(() => {
-        initDatabase()
+        async function setUp() {
             try {
-                async function setUp() {
-                    await initDatabase()
-                    setDbPronto(true)
-                }
+                await initDatabase()
+                setDbPronto(true)
             } catch (error) {
-                console.erro('Erro ao inicializar banco de dados', error)
+                console.error('Erro ao inicializar banco de dados', error)
             }
-            setUp()
+        }
+        setUp()
     }, [])
 
     if (!dbPronto) {

@@ -4,16 +4,16 @@ import { getDbConnection } from "./init";
 export async function addTransaction(descricao, valor, tipo, categoria, data) {
     const db = await getDbConnection()
     const result = await db.runAsync(`
-        INSERT INTO transacoes (descricao, valor, tipo, categoria, data) VALUES(?, ?, ?, ?, ?)`, [descricao])
+        INSERT INTO transacoes (descricao, valor, tipo, categoria, data) VALUES(?, ?, ?, ?, ?)`, [descricao, valor, tipo, categoria, data])
         return result.lastInsertRowId
 }
 
-export async function getTransaction(tipoFiltro = 'Todos') {
+export async function getTransactions(tipoFiltro = 'Todos') {
     const db = await getDbConnection()
 
     if(tipoFiltro === 'Receitas' || tipoFiltro === 'receita') {
         return await db.getAllAsync(
-            "SELECT * FROM transacoes WHERE tipo = 'receita' ORDER BY data, DESC, id DESC;" 
+            "SELECT * FROM transacoes WHERE tipo = 'receita' ORDER BY data DESC, id DESC;" 
         )
     }
 
