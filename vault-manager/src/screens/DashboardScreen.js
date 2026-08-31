@@ -111,7 +111,7 @@ export default function DashboardScreen({ navigation }) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} >
         {/* Cabeçalho de Boas Vindas */}
         <View style={styles.header} >

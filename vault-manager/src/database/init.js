@@ -1,8 +1,13 @@
 import * as SQLite from 'expo-sqlite'
 
+let dbInstance = null
+
 //Retorna a instância de conexão com o banco
 export async function getDbConnection() {
-    return await SQLite.openDatabaseAsync('financas.db')
+    if(!dbInstance) {
+        dbInstance = SQLite.openDatabaseAsync('financas.db')
+    }
+    return dbInstance
 }
 
 export async function initDatabase() {
