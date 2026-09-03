@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -48,6 +49,10 @@ export default function SummaryCards({ saldo = 0, receitas = 0, despesas = 0 }) 
         </View>
       </View>
     </View>
+    )
+
+} 
+
   );
 }
 
