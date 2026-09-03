@@ -53,30 +53,30 @@ gerenciador-financas/
 └── package.json
 📋 4. Checklist Detalhado de Implementação
 Etapa 1: Camada de Dados (src/database/)
-[ ] init.js:
+[X] init.js:
 
-[ ] Criar função de inicialização que abre a conexão com o banco financas.db.
+[X] Criar função de inicialização que abre a conexão com o banco financas.db.
 
-[ ] Executar query CREATE TABLE IF NOT EXISTS transacoes com as colunas: id, descricao, valor, tipo ('receita'/'despesa'), categoria, e data.
+[X] Executar query CREATE TABLE IF NOT EXISTS transacoes com as colunas: id, descricao, valor, tipo ('receita'/'despesa'), categoria, e data.
 
-[ ] transactionRepository.js:
+[X] transactionRepository.js:
 
-[ ] Implementar addTransactionDB(descricao, valor, tipo, categoria, data).
+[X] Implementar addTransactionDB(descricao, valor, tipo, categoria, data).
 
-[ ] Implementar getTransactionsDB(tipoFiltro).
+[X] Implementar getTransactionsDB(tipoFiltro).
 
-[ ] Implementar getTotalsDB() (Retorna a soma de receitas, despesas e saldo).
+[X] Implementar getTotalsDB() (Retorna a soma de receitas, despesas e saldo).
 
-[ ] Implementar updateTransactionDB(id, descricao, valor, tipo, categoria, data).
+[X] Implementar updateTransactionDB(id, descricao, valor, tipo, categoria, data).
 
-[ ] Implementar deleteTransactionDB(id).
+[X] Implementar deleteTransactionDB(id).
 
 Etapa 2: Componentes Reutilizáveis (src/components/)
-[ ] SummaryCards.js:
+[X] SummaryCards.js:
 
-[ ] Renderizar card principal de Saldo Total (Destaque visual).
+[X] Renderizar card principal de Saldo Total (Destaque visual).
 
-[ ] Renderizar sub-cards de Receitas (Verde) e Despesas (Vermelho).
+[X] Renderizar sub-cards de Receitas (Verde) e Despesas (Vermelho).
 
 [ ] Receber valores dinâmicos via props.
 
