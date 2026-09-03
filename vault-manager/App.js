@@ -24,7 +24,7 @@ export default function App() {
         return(
             <View style={styles.loadingData}>
                 <ActivityIndicator size='large' color='#6366F1' />
-                <Text style={styles.subtitle}></Text>
+                <Text style={styles.subTitle}></Text>
             </View>
         )
     }

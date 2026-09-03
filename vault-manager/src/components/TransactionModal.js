@@ -71,7 +71,7 @@ export default function TransactionModal({ visible, onClose, onSave, itemToEdit 
           {/* header do Modal */}
           <View style={styles.header}>
             <Text style={styles.title}>
-              {itemToEdit ? 'Editar Transaação' : 'Nova Transação'}
+              {itemToEdit ? 'Editar Transação' : 'Nova Transação'}
             </Text>
             <TouchableOpacity onPress={onClose}>
               <Ionicons name='close-circle-outline' size={28} color='#94A3B8' />

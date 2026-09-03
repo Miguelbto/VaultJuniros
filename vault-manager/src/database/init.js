@@ -33,8 +33,7 @@ async function seedDatabase(db) {
 
     if (result.total === 0) {
         await db.runAsync(`INSERT INTO transacoes (descricao, valor, tipo, categoria, data) VALUES ('Salário Mensal', 4500.00, 'receita', 'Renda', '2026-08-01'),
-      ('Supermercado', 150.00, 'despesa', 'Alimentação', '2026-08-25'),
-      ('Gasolina', 80.00, 'despesa', 'Transporte', '2026-08-28');`)
+      `)
 
         console.log('Banco de dados populada com sucesso!')
     }
